@@ -6,7 +6,7 @@ startUp: isImageStarting
 	OSSUnixSubprocess new
 		workingDirectory: ATLDockerRunner repositoryDirectory;
 		shellCommand:
-			'docker inspect -f ''{{.State.Running}}'' atlas 2>/dev/null || echo "false"';
+			'docker inspect -f ''{{.State.Running}}'' atlas-ner 2>/dev/null || echo "false"';
 		redirectStdout;
 		runAndWaitOnExitDo: [ :process :outString |
 			| out |
