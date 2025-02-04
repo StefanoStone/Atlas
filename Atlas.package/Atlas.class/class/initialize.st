@@ -1,5 +1,5 @@
 class initialization
 initialize
    
-	Smalltalk addToStartUpList: self.
+	SessionManager default addToStartUpList: self.
 	"Smalltalk addToShutDownList: self."
