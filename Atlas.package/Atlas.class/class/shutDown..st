@@ -1,7 +1,7 @@
 system startup
-shutDown
+shutDown: isImageQuitting
 
-	"ATLDockerRunner instance stopContainer."
+	isImageQuitting ifTrue: [ ATLDockerRunner instance stopContainer].
 
 	"OSSUnixSubprocess new
 	workingDirectory: ATLDockerRunner repositoryDirectory;
