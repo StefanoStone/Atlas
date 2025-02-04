@@ -21,4 +21,9 @@ If you need to communicate with Docker from inside a container on Windows, you c
 2. Use the TCP Socket Instead of /var/run/docker.sock
     - Instead of mounting /var/run/docker.sock, you can connect using tcp://host.docker.internal:4000 in your container.
 
-This will require you to also edit the source code of the Atlas library to use the TCP socket instead of the Unix socket.
+This will require you to edit the Atlas library's source code to use the TCP socket instead of the Unix socket.
+
+### NOTE
+
+This project might not work stand-alone as the Ephestos library is not pulled into the project but properly works using the PythonBridge available in [Polyglot](https://github.com/StefanoStone/Polyglot).
+An instance of a running docker must be available on the machine running the images. The project only works on Linux/MacOS at the moment.
