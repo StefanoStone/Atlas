@@ -1,5 +1,7 @@
 system startup
-startUp
+startUp: isOpening
+
+	isOpening ifFalse: [ ^ self ].
 
 	OSSUnixSubprocess new
 		workingDirectory: ATLDockerRunner repositoryDirectory;
