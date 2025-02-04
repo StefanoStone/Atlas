@@ -5,6 +5,8 @@ baseline: spec
 		for: #pharo
 		do:
 			[
+			self osSubprocess: spec.
+			
 			spec
 				preLoadDoIt: #preload:package:;
 				postLoadDoIt: #postload:package:.
