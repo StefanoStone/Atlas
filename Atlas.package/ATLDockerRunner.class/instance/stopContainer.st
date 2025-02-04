@@ -8,5 +8,7 @@ stopContainer
 	shellCommand: self class dockerStopCommand;
 		redirectStdout;
 		runAndWait.
-		
+	
+	self isRunning: false.
+	
 	^ self
