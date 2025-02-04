@@ -2,7 +2,7 @@ system startup
 shutDown
 
 	OSSUnixSubprocess new
-	workingDirectory: self class repositoryDirectory;
+	workingDirectory: ATLDockerRunner repositoryDirectory;
 	shellCommand: 'docker inspect -f ''{{.State.Running}}'' atlas 2>/dev/null || echo "false"';
 	redirectStdout;
 	runAndWaitOnExitDo: [ :process :outString | |out|
