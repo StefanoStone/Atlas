@@ -1,1 +1,1 @@
-SystemOrganization addCategory: #Atlas!
+self packageOrganizer ensurePackage: #Atlas withTags: #()!
