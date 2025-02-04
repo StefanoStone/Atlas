@@ -1,1 +1,1 @@
-SystemOrganization addCategory: #BaselineOfAtlas!
+self packageOrganizer ensurePackage: #BaselineOfAtlas withTags: #()!

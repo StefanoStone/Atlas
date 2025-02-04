@@ -5,7 +5,7 @@ newIsRunning: aBoolean
 	| runner |
 
 	runner := self basicNew initialize.
-	runner isRunning: aBoolean.
 	aBoolean ifFalse: [ runner runContainer ].
+	runner isRunning: true.
 	
 	^ runner 
