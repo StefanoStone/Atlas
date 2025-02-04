@@ -1,5 +1,4 @@
 class initialization
 initialize
    
-	Smalltalk addToStartUpList: self.
-	Smalltalk addToShutDownList: self.
+	SessionManager default registerUserClassNamed: self name atPriority: (SessionManager default defaultPriority + 1)

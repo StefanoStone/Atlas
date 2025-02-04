@@ -7,6 +7,8 @@ runContainer
 	workingDirectory: self class repositoryDirectory;
 	shellCommand: self class dockerRunCommand;
 		redirectStdout;
-		runAndWait.
+		runAndWaitOnExitDo: [ :process | 
+			self isRunning: true
+			].
 		
 	^ self
