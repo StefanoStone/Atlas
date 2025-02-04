@@ -22,8 +22,7 @@ AtlasWorlMenuOn: aBuilder
 				order: 2.
 			(aBuilder item: #Status)
 				parent: #Atlas;
-				label: 'Container Status';
-				help: 'Status of the container';
-				icon: [ ATLDockerRunner instance isRunning ifTrue: [ (Smalltalk ui icons iconNamed: #testGreen) ] ifFalse: [(Smalltalk ui icons iconNamed: #testRed)] ] value;
+				label: (ATLDockerRunner instance isRunning ifTrue: [ 'The container is Running' ] ifFalse: ['The container is NOT Running']);
+				icon: (ATLDockerRunner instance isRunning ifTrue: [ (Smalltalk ui icons iconNamed: #testGreen) ] ifFalse: [(Smalltalk ui icons iconNamed: #testRed)]);
 				order: 3.  
 			].
