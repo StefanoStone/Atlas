@@ -1,0 +1,14 @@
+version: '3'
+services:
+  ner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "4000:4000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    entrypoint: python
+    command: pyatlas.py

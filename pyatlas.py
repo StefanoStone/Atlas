@@ -23,7 +23,6 @@ def initialize_server():
         print("initializing server")
 
     global threadSocket,listening
-    #threadSocket = threading.Thread(name='threadSocket', target= socket_listen)
     listening = True
 
     if alogging:
@@ -31,26 +30,23 @@ def initialize_server():
 
     create_socket_connection()
     socket_listen()
-    #threadSocket.start()
 
 
 def socket_listen():
     global receivedSocket,listening, receivedData,socketServer, socketMessages, pherror
     socketServer.listen(5)
 
-
     while listening:
-        (receivedSocket , adreess) = socketServer.accept()
+        (receivedSocket, address) = socketServer.accept()
         receivedData = (receivedSocket.recv(1024)).decode("utf-8")[:-2]
 
-
         socketMessages.append(receivedData)
+        print("received data : ",receivedData)
         time.sleep(0.03)
         handle_messages()
 
         if alogging:
             print("pherror : " ,pherror)
-
 
         while not (pherror[-1]==""):
 
@@ -62,19 +58,16 @@ def socket_listen():
 
 
             receivedSocket.sendall("end of error\n".encode())
-       # receivedSocket.close()
 
 def create_socket_connection():
     global socketServer, shutDown
     socketServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socketServer.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    socketServer.bind(('127.0.0.1',4000))
-
-
-
+    socketServer.bind(('0.0.0.0',4000))
 
 def handle_messages():
     global ephestos_running, thread_created, listening, socketServer, socketMessages, pherror, shutDown
+    print("handling messages")
 
     for msg in socketMessages:
         try:
@@ -100,7 +93,6 @@ def handle_messages():
             if alogging:
                 print( "inserted an error now pherror : ",pherror)
 
-            #socketMessages.remove(msg)
         socketMessages.remove(msg)
 
     if shutDown:
@@ -111,23 +103,13 @@ def handle_messages():
         socketServer.close()
         time.sleep(1)
 
-        #threadSocket.join()
         del socketServer
 
         thread_created = False
         shutDown = False
 
-
-
 def initAtlas():
-
-    #anotherThread = threading.Thread(target=another_thread)
-    #anotherThread.start()
-
     initialize_server()
-
-
-
 
 if __name__ == "__main__":
     initAtlas()
