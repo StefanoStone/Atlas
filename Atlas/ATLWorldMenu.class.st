@@ -1,5 +1,12 @@
-as yet unclassified
-AtlasWorldMenuOn: aBuilder
+Class {
+	#name : 'ATLWorldMenu',
+	#superclass : 'Object',
+	#category : 'Atlas',
+	#package : 'Atlas'
+}
+
+{ #category : 'as yet unclassified' }
+ATLWorldMenu class >> AtlasWorldMenuOn: aBuilder [
 	<worldMenu>
 	
 	| dockerSingleton |
@@ -30,3 +37,4 @@ AtlasWorldMenuOn: aBuilder
 				icon: (dockerSingleton isRunning ifTrue: [ (Smalltalk ui icons iconNamed: #testGreen) ] ifFalse: [(Smalltalk ui icons iconNamed: #testRed)]);
 				order: 3.  
 			].
+]
