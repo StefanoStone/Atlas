@@ -31,10 +31,16 @@ ATLWorldMenu class >> AtlasWorldMenuOn: aBuilder [
 				icon: (Smalltalk ui icons iconNamed: #stop);
 				action: [ dockerSingleton stopContainer. ];
 				order: 2.
+			(aBuilder item: #Refresh)
+				parent: #Atlas;
+				label: 'Refresh container status';
+				icon: (Smalltalk ui icons iconNamed: #refreshCircling);
+				action: [ dockerSingleton containerStatus ];
+				order: 3.
 			(aBuilder item: #Status)
 				parent: #Atlas;
 				label: (dockerSingleton isRunning ifTrue: [ 'The container is Running' ] ifFalse: ['The container is NOT Running']);
 				icon: (dockerSingleton isRunning ifTrue: [ (Smalltalk ui icons iconNamed: #testGreen) ] ifFalse: [(Smalltalk ui icons iconNamed: #testRed)]);
-				order: 3.  
+				order: 4.  
 			].
 ]

@@ -87,7 +87,7 @@ ATLDockerRunner >> containerStatus [
 	OSSUnixSubprocess new
 		workingDirectory: self class repositoryDirectory;
 		shellCommand:
-			('docker inspect -f ''{{.State.Running}}'' {1} 2>/dev/null || echo "false"' format: { self class dockerContainerName });
+			('docker inspect -f ''{{.State.Running}}'' ' , self class dockerContainerName , ' 2>/dev/null || echo "false"');
 		redirectStdout;
 		runAndWaitOnExitDo: [ :process :outString |
 			| out |
@@ -96,6 +96,8 @@ ATLDockerRunner >> containerStatus [
 			out = 'true' ifTrue: [ status := true ].
 			(out ~= 'true' and: out ~= 'false') ifTrue: [
 					^ self error: 'Docker runner not create successfully' ] ].
+			
+		self isRunning: status.
 			
 		^ status
 ]
