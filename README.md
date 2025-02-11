@@ -25,5 +25,4 @@ This will require you to edit the Atlas library's source code to use the TCP soc
 
 ### NOTE
 
-This project might not work stand-alone as the Ephestos library is not pulled into the project but properly works using the PythonBridge available in [Polyglot](https://github.com/StefanoStone/Polyglot).
 An instance of a running docker must be available on the machine running the images. The project only works on Linux/MacOS at the moment.
